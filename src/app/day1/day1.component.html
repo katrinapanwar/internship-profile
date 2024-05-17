@@ -1,1 +1,67 @@
-<button> Day1 </button>
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .modal-body {
+            text-align: left; /* Align text to the left */
+        }
+        .modal-body ul {
+            list-style-type: disc; /* Use bullets for the list */
+            text-align: left; /* Align list items to the center */
+        }
+        .modal-body hr {
+            border: 1px solid #ccc; /* Add border after each section */
+        }
+    </style>
+</head>
+<body>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    Day 1
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Day 1 Tasks, Date: 07/05/2024 </h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <ul>
+                    <li>Assigned Task:                                                    
+                        <ul>
+                            <li>Download golang.</li>
+                            <li>Run and compile first golang program of hello world.</li>
+                            <li>Learn about the semantics and structure of how to initialise the project.</li>
+                            <li>Watch 1 hr of video of GoLand Tutorial.</li>
+                            <li>Configure Debugger.</li>
+                        </ul>
+                    </li>
+                    <hr>
+                    <li>Completed Task:
+                        <ul>
+                            <li>Downloaded GoLang.</li>
+                            <li>Ran and compiled first golang program of hello world.</li>
+                            <li>Learned about the semantics and structure of how to initialise the project.</li>
+                            <li>Watched 1 hr of video of GoLand Tutorial.</li>
+                            <li>Configured Debugger.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+
+
+
+
