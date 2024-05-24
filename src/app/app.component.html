@@ -1,63 +1,72 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <style>
-        h1 {
-            text-align: center;
-            font-size: 32px; /* You can adjust the size as needed */
-            color: rgb(1, 1, 1);
-            margin-bottom: 10px; /* Add margin space below the h2 element */
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center components horizontally */
         }
-        h2 {
-          text-align: left;
-          font-size: 20px;
-          font-family: Arial;
-          color: rgb(16, 99, 129);
-          margin-bottom: 10px; /* Add margin space below the h2 element */
-          margin-inline-start: 10px;
 
+        app-socials,
+        app-header,
+        app-languages,
+        app-framework {
+            width: 100%; /* Ensure components take full width */
+            margin: 0;
+            padding: 0;
         }
-        h3 {
-          text-align: left;
-          font-size: 20px;
-          font-family: Arial;
-          color: rgb(16, 99, 129);
-          margin-bottom: 30px; /* Add margin space below the h2 element */
-          margin-inline-start: 10px;
+
+        app-header {
+            margin-bottom: 40px; /* Add a gap between header and days-container */
         }
-    </style>
-</head>
-<body>
 
-<h1> Katrina's {{title}} </h1>
-<hr>
-<h2> I'm a third year student at McGill University and I'm studying Software Engineering.</h2>
-<h2> Internship at Entangle </h2>
-<h3> Internship Progress Day Wise: </h3>
+        .days-container {
+            display: flex;
+            width: 100%; /* Ensure the container takes full width */
+            justify-content: space-around; /* Space out the day components horizontally */
+            gap: 20px; /* Add a gap between day1 and day2 */
+            margin-bottom: 40px; /* Add a gap between days-container and languages */
+        }
 
-</body>
-</html>
-
-<!DOCTYPE html>
-<html>
-<head>
-    <style>
         app-day1, app-day2, app-day3, app-day4, app-day5 {
-            display: inline-block; /* Ensures elements are displayed in a line */
-            margin-inline-start: 60px;
-            margin-right: 100px; /* Adjust the margin as needed for space between elements */
+            flex: 1; /* Ensure all day components take equal space */
+            margin: 0;
+            padding: 0;
+        }
+
+        app-languages {
+            margin-bottom: 40px; /* Add a gap between languages and framework */
         }
     </style>
 </head>
 <body>
-
-<app-day1></app-day1>
-<app-day2></app-day2>
-<app-day3></app-day3>
-<app-day4></app-day4>
-<app-day5></app-day5>
-
+    <app-socials></app-socials>
+    <app-header></app-header>
+    <h2 class="mat-display-1" style="text-align: center">Progress</h2>
+    <div class="days-container">
+        <app-day1></app-day1>
+        <app-day2></app-day2>
+        <app-day3></app-day3>
+        <app-day4></app-day4>
+        <app-day5></app-day5>
+    </div>
+    <app-languages></app-languages>
+    <app-framework></app-framework>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
 
 

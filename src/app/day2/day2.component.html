@@ -1,37 +1,89 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button Dialog Example</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        .modal-body {
-            text-align: left; /* Align text to the left */
+        body {
+            font-family: Arial, sans-serif;
+            margin-top: 0px;
         }
-        .modal-body ul {
-            list-style-type: disc; /* Use bullets for the list */
-            text-align: left; /* Align list items to the left */
+        .dialog {
+            width: 200px;
+            height: 220px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            text-align: center;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
         }
-        .modal-body hr {
-            border: 1px solid #ccc; /* Add border after each section */
+        .dialog img {
+            width: 100%;
+            height: 100px; /* Adjusted to fit within the new dimensions */
+            object-fit: cover;
+        }
+        .dialog-content {
+            padding: 8px; /* Adjusted for the smaller size */
+            flex-grow: 1;
+        }
+        .dialog-content h2 {
+            font-size: 14px; /* Adjusted for the smaller size */
+            text-align: centre;
+            margin: 8px 0;
+            color: #333;
+        }
+        .dialog-footer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 4px; /* Adjusted for the smaller size */
+            background-color: #f9f9f9;
+        }
+        .tag {
+            display: inline-block;
+            padding: 2px 4px; /* Adjusted for the smaller size */
+            background-color: #e0f7fa;
+            border-radius: 12px;
+            color: #00796b;
+            font-size: 10px; /* Adjusted for the smaller size */
+            margin-right: 4px;
+        }
+        .date {
+            font-size: 10px; /* Adjusted for the smaller size */
+            color: #757575;
         }
     </style>
 </head>
 <body>
 
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">
-    Day 2
-</button>
+<!-- Dialog Preview -->
+<div class="dialog" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">
+    <img src="assets/images/day2.jpg" alt="Image">
+    <div class="dialog-content">
+        <h2>Day 2</h2>
+    </div>
+    <div class="dialog-footer">
+        <span class="tag">GoLang</span>
+        <span class="date">May 8</span>
+    </div>
+</div>
 
 <!-- Modal -->
 <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel2" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 class="modal-title fs-5" id="staticBackdropLabel2">Day 2 Tasks, Date: 08/05/2024 </h2>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <ul>
-                    <li>Assigned Task:                                                    
+                    <li>Assigned Task:
                         <ul>
                             <li>Proceed further and complete two hours of study from the GoLang Tutorial.</li>
                             <li>Make a program of palindrome of number in golang.</li>
@@ -57,6 +109,8 @@
         </div>
     </div>
 </div>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>

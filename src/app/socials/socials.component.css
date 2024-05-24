@@ -1,0 +1,28 @@
+:host {
+  display: block;
+}
+
+.header {
+  display: flex;
+  justify-content: flex-end; /* Adjust to space-between to align items properly */
+  padding: 10px 20px;
+  background-color: #b3e1e4;
+  border-bottom: 1px solid #ddd;
+}
+
+.social-links {
+  display: flex;
+  gap: 10px;
+}
+
+.social-links img, .profile-picture img {
+  height: 30px; /* Adjust size as needed */
+  width: 30px;  /* Adjust size as needed */
+  border-radius: 150%; /* Make images circular */
+  object-fit: contain; /* Ensure the images fit well within the circle */
+}
+
+.profile-picture {
+  display: flex;
+  align-items: center;
+}

@@ -1,0 +1,46 @@
+.button-container {
+    display: flex;
+    padding-top: 10px;
+    gap: 110px; /* Adjust the gap value to increase/decrease space between cards */
+    padding-left: 40px; /* Adjust the padding value to create space from the left edge of the screen */
+    flex-wrap: wrap;
+    padding-right: 40px;
+    padding-bottom: 30px/* Optional: allows cards to wrap to the next line if there's not enough space */
+  }
+  
+  
+  .dis {
+    width: 100px; /* Set the desired width */
+    height: 150px;
+    display: flex;
+    border-radius: 10px;
+    flex-direction: column;
+    align-items: center; /* Center align content vertically */
+    text-align: center; /* Center align text horizontally */
+    position: relative; /* Add relative positioning for pseudo-element */
+  }
+  
+  .dis img {
+    padding-top: 10px;
+    max-width: 80px; /* Adjust the max-width of the image */
+    transition: transform 0.3s ease; /* Add transition for smooth animation */
+  }
+  
+  /* Pseudo-element for swipe effect */
+  .dis::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    transition: width 0.3s ease, border-radius 0.3s ease; /* Include border-radius in the transition */
+    border-radius: 10px; /* Set the desired border radius */
+  
+  }
+  
+  /* Hover effect */
+  .dis:hover::before {
+    width: 100%; /* Expand the pseudo-element width on hover */
+  }
