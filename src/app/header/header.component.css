@@ -9,12 +9,12 @@ header {
     border-right: 2px solid #e0e0e0;
     margin-left: 1px; 
     margin-right: 1px;
-    height: 110px;
+    height: 90px;
 }
 
 h1 {
     text-align: left;
-    font-size: 28px; /* You can adjust the size as needed */
+    font-size: 23px; /* You can adjust the size as needed */
     color: rgb(1, 1, 1);
     margin-left: 10px;
 }

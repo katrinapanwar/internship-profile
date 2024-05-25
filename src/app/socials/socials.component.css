@@ -4,25 +4,25 @@
 
 .header {
   display: flex;
-  justify-content: flex-end; /* Adjust to space-between to align items properly */
+  justify-content: end;
+  align-items: center;
   padding: 10px 20px;
-  background-color: #b3e1e4;
+  background-color: #f8f8f8;
   border-bottom: 1px solid #ddd;
 }
 
 .social-links {
   display: flex;
   gap: 10px;
+
 }
 
-.social-links img, .profile-picture img {
-  height: 30px; /* Adjust size as needed */
-  width: 30px;  /* Adjust size as needed */
-  border-radius: 150%; /* Make images circular */
-  object-fit: contain; /* Ensure the images fit well within the circle */
+.social-links a img {
+  height: 30px;
+  width: 30px;
 }
 
-.profile-picture {
-  display: flex;
-  align-items: center;
+.circle{
+  border-radius: 50%; /* Make the image circular */
+  object-fit: cover; /* Ensure the image covers the area without distortion */
 }
