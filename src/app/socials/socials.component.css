@@ -4,17 +4,22 @@
 
 .header {
   display: flex;
-  justify-content: end;
+  justify-content: space-between; /* Space out menu and socials */
   align-items: center;
   padding: 10px 20px;
   background-color: #f8f8f8;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 2px solid #ddd;
+}
+
+.menu-container {
+  flex: 1; /* Ensure menu container takes up necessary space */
+  display: flex;
+  justify-content: flex-start; /* Align menu to the left */
 }
 
 .social-links {
   display: flex;
   gap: 10px;
-
 }
 
 .social-links a img {
@@ -22,7 +27,7 @@
   width: 30px;
 }
 
-.circle{
+.circle {
   border-radius: 50%; /* Make the image circular */
   object-fit: cover; /* Ensure the image covers the area without distortion */
 }

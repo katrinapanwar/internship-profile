@@ -44,3 +44,7 @@
   .dis:hover::before {
     width: 100%; /* Expand the pseudo-element width on hover */
   }
+
+  h2{
+    margin-top: 30px;
+  }

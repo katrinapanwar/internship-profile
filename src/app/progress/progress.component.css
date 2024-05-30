@@ -1,0 +1,57 @@
+/* Body Styles */
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center components horizontally */
+  }
+  
+  h3 {
+    font-size: 23px; /* You can adjust the size as needed */
+    color: rgb(1, 1, 1);
+    margin-left: 10px;
+    margin-top: 30px;
+  }
+  
+  
+  /* Days Container Styles */
+  .days-container {
+    display: flex;
+    margin-top: 10px; /* Reduce the margin-top to bring it closer to the heading */
+    width: 100%; /* Ensure the container takes full width */
+    justify-content: space-around; /* Space out the day components horizontally */
+    gap: 20px; /* Add a gap between day1 and day2 */
+  }
+  
+  app-day1,
+  app-day2,
+  app-day3,
+  app-day4,
+  app-day5 {
+    flex: 1; /* Ensure all day components take equal space */
+    margin: 0;
+    padding: 0;
+  }
+  
+  
+  header {
+    background-color: #ffffff;
+    padding: 0px; /* Reduce padding to make the header smaller */
+    text-align: left;
+    border-bottom: 2px solid #e0e0e0;
+    border-top: 0px solid #e0e0e0;
+    border-left: 2px solid #e0e0e0;
+    border-right: 2px solid #e0e0e0;
+    margin-left: 1px; 
+    margin-right: 1px;
+    height: 90px;
+    width: 1263px;
+}
+
+h1 {
+    text-align: left;
+    font-size: 23px; /* You can adjust the size as needed */
+    color: rgb(1, 1, 1);
+    margin-left: 10px;
+}

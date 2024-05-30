@@ -1,0 +1,41 @@
+/* about-me.component.css */
+.about-me-container {
+  display: flex;
+  align-items: flex-start; /* Align items to the top */
+  padding: 20px;
+  background-color: #f8f8f8;
+  gap: 20px; /* Add some space between the photo and the info box */
+  width: 1270px;
+  height: 490px;
+}
+
+.photo-container {
+  position: relative;
+}
+
+.profile-photo {
+  border-radius: 8px; /* Make the photo rectangular with slight rounding */
+  height: auto;
+  width: 400px; /* Adjust width as needed */
+  height: 400px;
+  object-fit: cover; /* Ensure the image covers the area without distortion */
+  background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(255, 255, 255, 1)); /* Fading effect */
+}
+
+.info-container {
+  background-color: white; /* Set background color to white */
+  padding: 20px;
+  border-radius: 8px; /* Optional: Add rounded corners to the info box */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow for better separation */
+  max-width: 600px;
+}
+
+.info h1 {
+  margin: 0;
+  font-size: 2em;
+}
+
+.info p {
+  font-size: 1.2em;
+  line-height: 1.5;
+}

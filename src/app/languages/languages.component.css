@@ -1,5 +1,6 @@
 .button-container {
     display: flex;
+    margin-top: 20px;
     padding-top: 5px;
     gap: 110px; /* Adjust the gap value to increase/decrease space between cards */
     padding-left: 40px; /* Adjust the padding value to create space from the left edge of the screen */
@@ -45,4 +46,8 @@
   /* Hover effect */
   .dis:hover::before {
     width: 100%; /* Expand the pseudo-element width on hover */
+  }
+
+  h2 {
+    margin-top: 30px;
   }
