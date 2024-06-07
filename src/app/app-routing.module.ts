@@ -6,12 +6,15 @@ import { MenuComponent } from './menu/menu.component';
 import { ProgressComponent } from './progress/progress.component';
 import { LanguagesComponent } from './languages/languages.component';
 import { FrameworkComponent } from './framework/framework.component';
+import { EntryManagerComponent } from './entry-manager/entry-manager.component';
+import { NewEntryComponent } from './new-entry/new-entry.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent},
-  { path: 'progress', component: ProgressComponent},
+  { path: 'entry-manager', component: EntryManagerComponent},
   { path: 'languages', component: LanguagesComponent},
-  { path: 'framework', component: FrameworkComponent}
+  { path: 'framework', component: FrameworkComponent},
+  { path: 'new-entry', component: NewEntryComponent}
 ];
 
 @NgModule({

@@ -9,8 +9,4 @@ import { Router } from '@angular/router';
 })
 export class MenuComponent {
   constructor(private router: Router) {}
-
-  navigateToHome() {
-    this.router.navigateByUrl('./home'); // Navigate to the About Me page
-  }
 }

@@ -1,0 +1,26 @@
+.container {
+    text-align: center;
+    margin: 20px;
+  }
+  
+  .new-entry-form, .existing-entries, .entry-details {
+    margin-top: 20px;
+  }
+  
+  button {
+    margin: 5px;
+  }
+  
+  .new-entry-form input, .new-entry-form textarea {
+    display: block;
+    margin: 10px auto;
+  }
+  
+  .existing-entries div {
+    cursor: pointer;
+    margin: 5px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    display: inline-block;
+  }
+  
