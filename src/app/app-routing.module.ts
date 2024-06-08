@@ -8,13 +8,15 @@ import { LanguagesComponent } from './languages/languages.component';
 import { FrameworkComponent } from './framework/framework.component';
 import { EntryManagerComponent } from './entry-manager/entry-manager.component';
 import { NewEntryComponent } from './new-entry/new-entry.component';
+import { OldEntryComponent } from './old-entry/old-entry.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent},
   { path: 'entry-manager', component: EntryManagerComponent},
   { path: 'languages', component: LanguagesComponent},
   { path: 'framework', component: FrameworkComponent},
-  { path: 'new-entry', component: NewEntryComponent}
+  { path: 'new-entry', component: NewEntryComponent},
+  { path: 'old-entry', component: OldEntryComponent}
 ];
 
 @NgModule({

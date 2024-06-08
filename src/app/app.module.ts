@@ -29,22 +29,11 @@ import { FormGroup, FormControl, FormsModule, ReactiveFormsModule } from '@angul
 import { JsonPipe } from '@angular/common';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { provideNativeDateAdapter } from '@angular/material/core';
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  Inject,
-  OnDestroy,
-} from '@angular/core';
-import {
-  DateAdapter,
-  MAT_DATE_FORMATS,
-  MatDateFormats,
-} from '@angular/material/core';
-import {Subject} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
+import { MatNativeDateModule, provideNativeDateAdapter } from '@angular/material/core';
 import {MatInputModule} from '@angular/material/input';
+import { OldEntryComponent } from './old-entry/old-entry.component';
+import { DialogComponent } from './dialog/dialog.component';
+
 
 
 const routes: Routes = [
@@ -68,7 +57,9 @@ const routes: Routes = [
     HomeComponent,
     ProgressComponent,
     EntryManagerComponent,
-    NewEntryComponent
+    NewEntryComponent,
+    OldEntryComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
@@ -87,7 +78,8 @@ const routes: Routes = [
     JsonPipe,
     MatFormFieldModule, 
     MatInputModule, 
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [
     provideAnimationsAsync()

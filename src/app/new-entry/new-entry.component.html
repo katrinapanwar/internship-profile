@@ -1,8 +1,36 @@
-<mat-form-field>
-  <mat-label>Custom calendar header</mat-label>
-  <input matInput [matDatepicker]="picker">
-  <mat-hint>MM/DD/YYYY</mat-hint>
-  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-  <mat-datepicker #picker [calendarHeaderComponent]="exampleHeader"></mat-datepicker>
-</mat-form-field>
+<div class="form-container">
+  <h2 class="form-heading">Enter Updates</h2>
+  
+  <mat-form-field class="example-full-width">
+    <mat-label>Choose a date</mat-label>
+    <input matInput [matDatepicker]="picker">
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <button mat-raised-button (click)="picker.open()">Open</button>
+  
+  <mat-form-field class="example-form-field">
+    <mat-label>Enter Day</mat-label>
+    <input matInput type="text" [(ngModel)]="dayValue">
+    <button *ngIf="dayValue" matSuffix mat-icon-button aria-label="Clear" (click)="dayValue=''">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+  
+  <mat-form-field class="example-form-field">
+    <mat-label>Enter Task of the Day</mat-label>
+    <input matInput type="text" [(ngModel)]="taskValue">
+    <button *ngIf="taskValue" matSuffix mat-icon-button aria-label="Clear" (click)="taskValue=''">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+  
+  <button mat-raised-button color="primary" (click)="saveData()">Save</button>
+</div>
+
+<old-entry [entries]="savedEntries"></old-entry>
+
+
+
+
   
