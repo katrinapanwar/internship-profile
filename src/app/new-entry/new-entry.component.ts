@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from '../dialog/dialog.component';
 @Component({
@@ -6,26 +6,43 @@ import { DialogComponent } from '../dialog/dialog.component';
   templateUrl: './new-entry.component.html',
   styleUrl: './new-entry.component.css'
 })
-export class NewEntryComponent { 
-  dayValue = 'Clear me';
-  taskValue = 'Clear me';
-  savedEntries: { date: string, day: string, task: string }[] = [];
-  picker: any;
+export class NewEntryComponent implements OnInit{ 
+  dayValue: string = '';
+  taskValue: string = '';
+  savedEntries: { day: string, task: string }[] = [];
 
   constructor(public dialog: MatDialog) {}
 
+  ngOnInit() {
+    this.loadEntries();
+  }
+
   saveData() {
-    const date = new Date(this.picker._selected); // Get the selected date
-    const entry = { date: date.toLocaleDateString(), day: this.dayValue, task: this.taskValue };
-    this.savedEntries.push(entry);
+    if (this.dayValue && this.taskValue) {
+      const newEntry = { day: this.dayValue, task: this.taskValue };
+      this.savedEntries.push(newEntry);
+      this.saveEntries();
+      this.dayValue = '';
+      this.taskValue = '';
+    }
+  }
 
-    // Open the dialog to show saved data
+  saveEntries() {
+    localStorage.setItem('savedEntries', JSON.stringify(this.savedEntries));
+  }
+
+  loadEntries() {
+    const entries = localStorage.getItem('savedEntries');
+    if (entries) {
+      this.savedEntries = JSON.parse(entries);
+    }
+  }
+
+  openDialog() {
     this.dialog.open(DialogComponent, {
-      data: entry
+      data: {
+        entries: this.savedEntries
+      }
     });
-
-    // Clear the inputs
-    this.dayValue = '';
-    this.taskValue = '';
   }
 }

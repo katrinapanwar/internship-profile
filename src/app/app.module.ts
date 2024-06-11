@@ -14,14 +14,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { HeaderComponent } from './header/header.component';
 import { SocialsComponent } from './socials/socials.component';
 import { LanguagesComponent } from './languages/languages.component';
-import { MatCardModule } from '@angular/material/card';
 import { FrameworkComponent } from './framework/framework.component';
 import { MenuComponent } from './menu/menu.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { HomeComponent } from './home/home.component';
 import { RouterModule, Routes } from '@angular/router';
-import { AppRoutingModule } from './app-routing.module';
 import { ProgressComponent } from './progress/progress.component';
 import { EntryManagerComponent } from './entry-manager/entry-manager.component';
 import { NewEntryComponent } from './new-entry/new-entry.component';
@@ -33,6 +31,20 @@ import { MatNativeDateModule, provideNativeDateAdapter } from '@angular/material
 import {MatInputModule} from '@angular/material/input';
 import { OldEntryComponent } from './old-entry/old-entry.component';
 import { DialogComponent } from './dialog/dialog.component';
+import { InternshipComponent } from './internship/internship.component';
+import { MatCardModule } from '@angular/material/card';  // Import MatCardModule
+import {MatSnackBar, MatSnackBarModule} from "@angular/material/snack-bar";
+import { AppRoutingModule } from './app-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatDatepicker,} from "@angular/material/datepicker";
+import {MatFormField} from "@angular/material/form-field";
+import {MatButtonToggle, MatButtonToggleModule} from "@angular/material/button-toggle";
+import { MatListModule } from '@angular/material/list';
+import { MatDialog, MatDialogModule} from "@angular/material/dialog";
+import {FormBuilder} from '@angular/forms';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {ProgressSpinnerMode, MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 
 
@@ -59,7 +71,8 @@ const routes: Routes = [
     EntryManagerComponent,
     NewEntryComponent,
     OldEntryComponent,
-    DialogComponent
+    DialogComponent,
+    InternshipComponent
   ],
   imports: [
     BrowserModule,
@@ -79,7 +92,26 @@ const routes: Routes = [
     MatFormFieldModule, 
     MatInputModule, 
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatNativeDateModule,
+    MatButtonModule,
+    MatButtonToggleModule,
+    MatListModule,
+    FormsModule,
+    MatCardModule,
+    MatSnackBarModule,
+    MatDialogModule,
+    ReactiveFormsModule,
+    MatStepperModule,
+    MatCheckboxModule,
+    JsonPipe,
+    MatProgressSpinnerModule
   ],
   providers: [
     provideAnimationsAsync()

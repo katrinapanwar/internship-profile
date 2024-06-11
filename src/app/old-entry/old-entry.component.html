@@ -1,7 +1,5 @@
 <div *ngFor="let entry of entries">
-    <p><strong>Date:</strong> {{entry.date}}</p>
-    <p><strong>Day:</strong> {{entry.day}}</p>
-    <p><strong>Task:</strong> {{entry.task}}</p>
-    <hr>
-  </div>
+  <button mat-raised-button>{{ entry.day }}: {{ entry.task }}</button>
+</div>
+
   

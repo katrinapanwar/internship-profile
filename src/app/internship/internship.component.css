@@ -1,0 +1,112 @@
+.background-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .button-container {
+    width: 1260px;
+    display: flex;
+    justify-content: center;
+    background-color: #f1f1f1;
+    padding: 0px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .button-toggle-group {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .custom-button {
+    flex: 1;
+    text-align: center;
+  }
+  
+  .slider {
+    display: none;
+  }
+  
+  .content-container {
+    width: 600px;
+    padding-top: 20px;
+    justify-content: center;
+    margin-left: 2px;
+    align-items: center;
+    padding-left: 20px;
+  }
+  
+  .mat-form-field {
+    width: 100%;
+  }
+  
+  .button-container .day-button {
+    width: 100%;
+    justify-content: center;
+    background-color: #3f51b5;
+    color: #fff;
+  }
+
+  /* Styling for the container div */
+.data-container {
+    width: 500px;
+    justify-content: center;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    padding-bottom: 10px;
+    gap: 14px;
+  }
+  
+  /* Styling for the mat-card */
+  .mat-card {
+    margin: 10px;
+    width: 500px; /* Adjust the width as needed */
+  }
+  
+  /* Styling for the day button */
+  .day-button {
+    width: 100%;
+    text-align: center;
+    background-color: #3f51b5;
+    width: 500px;
+    height: 50px;
+    flex-direction: column;
+  }
+  
+  /* Styling for the mat-card-content */
+  .mat-card-content {
+    text-align: center;
+    padding-top: 10px;
+  }
+
+  .mat-form-field .mat-input-element {
+    text-align: left;
+  }
+
+  header {
+    background-color: #ffffff;
+    padding: 0px; /* Reduce padding to make the header smaller */
+    text-align: left;
+    border-bottom: 2px solid #e0e0e0;
+    border-top: 0px solid #e0e0e0;
+    border-left: 2px solid #e0e0e0;
+    border-right: 2px solid #e0e0e0;
+    margin-left: 1px; 
+    margin-right: 1px;
+    height: 90px;
+    width: 1260px;
+    border-radius: 3px;
+}
+h1 {
+    text-align: left;
+    font-size: 23px; /* You can adjust the size as needed */
+    color: rgb(1, 1, 1);
+    margin-left: 10px;
+}
+
+  
+  
+  
