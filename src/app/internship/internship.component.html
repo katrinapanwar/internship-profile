@@ -14,7 +14,8 @@
   
       <div class="content-container">
         <div *ngIf="create_entry">
-            <h1>Enter Task Details</h1>
+            <br>
+            <h1 class="mat-display-1"> Enter Task Details </h1>
           <mat-form-field>
             <input matInput [matDatepicker]="datepicker" [(ngModel)]="selectedDate" (dateChange)="onUpdateDate($event)">
             <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
