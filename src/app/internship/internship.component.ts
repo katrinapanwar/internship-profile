@@ -1,10 +1,11 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { MatDialog } from "@angular/material/dialog";
 import { DialogComponent } from "../dialog/dialog.component";
 import { SharedService } from '../shared/shared.service';
-import { FormBuilder, FormGroup } from "@angular/forms";
+import { FormBuilder } from "@angular/forms";
 import { intern_update } from './internship.model';
+import { DataService, Data } from '../services/data.service'; // Ensure correct import from DataService
 
 @Component({
   selector: 'app-internship',
@@ -22,20 +23,36 @@ export class InternshipComponent implements OnInit {
   add_button_status = false;
   show_entry = false;
   updates: intern_update[] = [];
+  selectedValue: string = 'create';
 
   constructor(
     private snackbar: MatSnackBar,
     public dialog: MatDialog,
     private shared: SharedService,
-    private _formBuilder: FormBuilder
+    private _formBuilder: FormBuilder,
+    private dataService: DataService  // Inject DataService
   ) {
     setTimeout(() => {
       this.show_ip = true;
     }, 0);
   }
 
-  new_entry(messege: string, action: string) {
-    this.snackbar.open(messege, action, { duration: 2000 });
+  ngOnInit(): void {
+    // Load updates from the backend when component initializes
+    this.dataService.getData().subscribe(dataEntries => {
+      this.updates = dataEntries.map(entry => new intern_update(
+        new Date(entry.date).toLocaleDateString('en-CA'),
+        entry.day,
+        entry.tasks.split(', '), // Assuming tasks is a comma-separated string
+        [],
+        0
+      ));
+      this.saveUpdatesToLocalStorage();
+    });
+  }
+
+  new_entry(message: string, action: string) {
+    this.snackbar.open(message, action, { duration: 2000 });
 
     // Create new entry
     const newUpdate = new intern_update(
@@ -46,9 +63,18 @@ export class InternshipComponent implements OnInit {
       0
     );
 
-    // Save new entry
-    this.updates.push(newUpdate);
-    this.saveUpdatesToLocalStorage();
+    // Save new entry using DataService
+    const dataEntry: Data = {
+      date: +new Date(this.formattedDate).getTime(), // Convert formattedDate to timestamp
+      day: this.day_input,
+      tasks: this.tasks_input
+    };
+
+    this.dataService.createData(dataEntry).subscribe(createdData => {
+      newUpdate.date = new Date(createdData.date).toLocaleDateString('en-CA');
+      this.updates.push(newUpdate);
+      this.saveUpdatesToLocalStorage();
+    });
   }
 
   saveUpdatesToLocalStorage() {
@@ -56,17 +82,17 @@ export class InternshipComponent implements OnInit {
     localStorage.setItem("internship_updates", JSON.stringify(this.updates));
   }
 
-  public onUpdateDay(event: Event) {
-    this.day_input = (<HTMLInputElement>event.target).value;
+  onUpdateDay(event: Event) {
+    this.day_input = (event.target as HTMLInputElement).value;
     this.updateButtonStatus();
   }
 
-  public onUpdateTask(event: Event) {
-    this.tasks_input = (<HTMLInputElement>event.target).value;
+  onUpdateTask(event: Event) {
+    this.tasks_input = (event.target as HTMLInputElement).value;
     this.updateButtonStatus();
   }
 
-  public onUpdateDate(event: any) {
+  onUpdateDate(event: any) {
     if (this.selectedDate) {
       this.formattedDate = this.selectedDate.toLocaleDateString('en-CA'); // Format as 'yyyy-MM-dd'
     } else {
@@ -93,18 +119,29 @@ export class InternshipComponent implements OnInit {
   }
 
   openDialog(n: number) {
-    console.log(n, this.updates[n]);
     this.shared.setMessage(this.updates[n]);
     this.dialog.open(DialogComponent, {});
   }
 
-  ngOnInit(): void {
-    // Load updates from local storage when component initializes
-    const storedUpdates = localStorage.getItem("internship_updates");
-    if (storedUpdates) {
-      this.updates = JSON.parse(storedUpdates);
-    }
+  updateEntry(index: number) {
+    const update = this.updates[index];
+    const dataEntry: Data = {
+      date: +new Date(update.date).getTime(),
+      day: update.day,
+      tasks: update.task.join(', ')
+    };
+
+    this.dataService.updateData(dataEntry.date, dataEntry).subscribe(() => {
+      this.saveUpdatesToLocalStorage();
+    });
   }
 
-  selectedValue: string = 'create';
+  deleteEntry(date: number) {
+    this.dataService.deleteData(date).subscribe(() => {
+      this.updates = this.updates.filter(u => +new Date(u.date).getTime() !== date);
+      this.saveUpdatesToLocalStorage();
+    });
+  }
 }
+
+

@@ -17,7 +17,8 @@
             <br>
             <h1 class="mat-display-1"> Enter Task Details </h1>
           <mat-form-field>
-            <input matInput [matDatepicker]="datepicker" [(ngModel)]="selectedDate" (dateChange)="onUpdateDate($event)">
+            <mat-label>Date</mat-label>
+            <input type="text" matInput [matDatepicker]="datepicker" [(ngModel)]="selectedDate" (dateChange)="onUpdateDate($event)">
             <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
             <mat-datepicker #datepicker></mat-datepicker>
           </mat-form-field>
@@ -25,13 +26,14 @@
           <br>
           <mat-form-field>
             <mat-label>Day</mat-label>
-            <input matInput (input)="onUpdateDay($event)">
+            <input type="text" matInput (input)="onUpdateDay($event)" [(ngModel)]="day">
           </mat-form-field>
   
           <br>
           <mat-form-field>
-            <mat-label>Today's Tasks</mat-label>
-            <textarea matInput (input)="onUpdateTask($event)"></textarea>
+            <mat-label>Tasks</mat-label>
+            <input type="text" matInput (input)="onUpdateTask($event)" [(ngModel)]="task">
+            <!--<textarea matInput (input)="onUpdateTask($event)"></textarea> -->
           </mat-form-field>
           <br>
           <button mat-raised-button color="primary" [disabled]="!add_button_status" (click)="new_entry('New Entry Added', 'Close')">Save</button>

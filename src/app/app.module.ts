@@ -45,6 +45,7 @@ import {FormBuilder} from '@angular/forms';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {ProgressSpinnerMode, MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -73,7 +74,7 @@ const routes: Routes = [
     OldEntryComponent,
     DialogComponent,
     InternshipComponent
-  ],
+    ],
   imports: [
     BrowserModule,
     MatSlideToggleModule,
@@ -111,7 +112,8 @@ const routes: Routes = [
     MatStepperModule,
     MatCheckboxModule,
     JsonPipe,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    HttpClientModule
   ],
   providers: [
     provideAnimationsAsync()
