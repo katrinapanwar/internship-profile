@@ -54,27 +54,49 @@ export class InternshipComponent implements OnInit {
   new_entry(message: string, action: string) {
     this.snackbar.open(message, action, { duration: 2000 });
 
-    // Create new entry
-    const newUpdate = new intern_update(
-      this.formattedDate,
-      this.day_input,
-      [this.tasks_input],
-      [],
-      0
+    // Check if an entry with the same date and day exists
+    const existingUpdateIndex = this.updates.findIndex(update =>
+      update.date === this.formattedDate && update.day === this.day_input
     );
 
-    // Save new entry using DataService
-    const dataEntry: Data = {
-      date: +new Date(this.formattedDate).getTime(), // Convert formattedDate to timestamp
-      day: this.day_input,
-      tasks: this.tasks_input
-    };
+    if (existingUpdateIndex !== -1) {
+      // Append the new task to the existing entry
+      this.updates[existingUpdateIndex].task.push(this.tasks_input);
 
-    this.dataService.createData(dataEntry).subscribe(createdData => {
-      newUpdate.date = new Date(createdData.date).toLocaleDateString('en-CA');
-      this.updates.push(newUpdate);
-      this.saveUpdatesToLocalStorage();
-    });
+      // Update the existing entry using DataService
+      const existingUpdate = this.updates[existingUpdateIndex];
+      const dataEntry: Data = {
+        date: +new Date(existingUpdate.date).getTime(), // Convert formattedDate to timestamp
+        day: existingUpdate.day,
+        tasks: existingUpdate.task.join(', ')
+      };
+
+      this.dataService.updateData(dataEntry.date, dataEntry).subscribe(() => {
+        this.saveUpdatesToLocalStorage();
+      });
+    } else {
+      // Create new entry
+      const newUpdate = new intern_update(
+        this.formattedDate,
+        this.day_input,
+        [this.tasks_input],
+        [],
+        0
+      );
+
+      // Save new entry using DataService
+      const dataEntry: Data = {
+        date: +new Date(this.formattedDate).getTime(), // Convert formattedDate to timestamp
+        day: this.day_input,
+        tasks: this.tasks_input
+      };
+
+      this.dataService.createData(dataEntry).subscribe(createdData => {
+        newUpdate.date = new Date(createdData.date).toLocaleDateString('en-CA');
+        this.updates.push(newUpdate);
+        this.saveUpdatesToLocalStorage();
+      });
+    }
   }
 
   saveUpdatesToLocalStorage() {
@@ -143,5 +165,7 @@ export class InternshipComponent implements OnInit {
     });
   }
 }
+
+
 
 
