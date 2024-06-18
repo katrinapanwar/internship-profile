@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { MatDialog } from "@angular/material/dialog";
+import { ActivatedRoute, Router } from '@angular/router';
 import { DialogComponent } from "../dialog/dialog.component";
 import { SharedService } from '../shared/shared.service';
 import { FormBuilder } from "@angular/forms";
@@ -24,13 +25,18 @@ export class InternshipComponent implements OnInit {
   show_entry = false;
   updates: intern_update[] = [];
   selectedValue: string = 'create';
+  deletePermission: boolean = false; // Variable to control delete button permission
+  passwordInput: string = ''; // User input for the password
+  hiddenPassword: string = ''; // Variable to store the hidden password with stars
 
   constructor(
     private snackbar: MatSnackBar,
     public dialog: MatDialog,
     private shared: SharedService,
     private _formBuilder: FormBuilder,
-    private dataService: DataService  // Inject DataService
+    private dataService: DataService,
+    private route: ActivatedRoute,
+    private router: Router // Inject Router
   ) {
     setTimeout(() => {
       this.show_ip = true;
@@ -38,6 +44,14 @@ export class InternshipComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // Extract query parameters
+    this.route.queryParams.subscribe(params => {
+      const tempPassword = params['tempPassword'];
+      this.hiddenPassword = tempPassword ? '*'.repeat(tempPassword.length) : '';
+      // Replace 'your_password' with the actual password you want to validate
+      this.deletePermission = (tempPassword === 'katrina');
+    });
+
     // Load updates from the backend when component initializes
     this.dataService.getData().subscribe(dataEntries => {
       this.updates = dataEntries.map(entry => new intern_update(
@@ -158,13 +172,34 @@ export class InternshipComponent implements OnInit {
     });
   }
 
-  deleteEntry(date: number) {
-    this.dataService.deleteData(date).subscribe(() => {
-      this.updates = this.updates.filter(u => +new Date(u.date).getTime() !== date);
-      this.saveUpdatesToLocalStorage();
+  deleteEntry(dateString: string) {
+    if (this.deletePermission) {
+      const date = +new Date(dateString).getTime();
+      this.dataService.deleteData(date).subscribe(() => {
+        this.updates = this.updates.filter(u => +new Date(u.date).getTime() !== date);
+        this.saveUpdatesToLocalStorage();
+      });
+    } else {
+      this.snackbar.open('You do not have permission to delete this entry', 'Close', { duration: 2000 });
+    }
+  }
+
+  // Method to update delete permission dynamically
+  updateDeletePermission() {
+    const tempPassword = this.passwordInput;
+    // Replace 'your_password' with the actual password you want to validate
+    this.deletePermission = (tempPassword === 'katrina');
+    // Update URL with the new password (optional)
+    this.router.navigate([], {
+      queryParams: { tempPassword: tempPassword },
+      queryParamsHandling: 'merge',
     });
+    this.hiddenPassword = '*'.repeat(tempPassword.length); // Update hidden password
   }
 }
+
+
+
 
 
 
