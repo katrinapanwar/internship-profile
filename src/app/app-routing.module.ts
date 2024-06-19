@@ -13,10 +13,12 @@ import { DialogComponent } from './dialog/dialog.component';
 import { InternshipComponent } from './internship/internship.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: '/home', pathMatch: 'full' },  // Default route
   { path: 'home', component: HomeComponent},
   { path: 'languages', component: LanguagesComponent},
   { path: 'framework', component: FrameworkComponent},
   { path: 'internship', component: InternshipComponent},
+  { path: '**', redirectTo: '/home' }  // Redirect to home if no route is matched
 ];
 
 @NgModule({

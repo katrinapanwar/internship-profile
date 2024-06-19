@@ -16,6 +16,7 @@
       <div *ngIf="create_entry">
         <br>
         <h1 class="mat-display-1">Enter Task Details</h1>
+        <hr>
         <mat-form-field>
           <mat-label>Date</mat-label>
           <input type="text" matInput [matDatepicker]="datepicker" [(ngModel)]="selectedDate" (dateChange)="onUpdateDate($event)">
@@ -64,6 +65,13 @@
       </div>
     </div>
   </div>
+
+
+
+
+  
+  
+  
 
 
 

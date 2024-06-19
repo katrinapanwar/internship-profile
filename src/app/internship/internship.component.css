@@ -103,6 +103,13 @@ h1 {
   margin-left: 10px;
 }
 
+h2 {
+  text-align: left;
+  font-size: 27px; /* You can adjust the size as needed */
+  color: rgb(1, 1, 1);
+  margin-left: 10px;
+}
+
 /* Additional styling for the password input section */
 .password-content {
   margin-top: 20px;
