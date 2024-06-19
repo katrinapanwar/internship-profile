@@ -83,7 +83,7 @@ const routes: Routes = [
     MatButtonModule,
     MatMenuModule,
     MatIconModule,
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes, { useHash: true }),
     AppRoutingModule,
     MatFormFieldModule,
     MatDatepickerModule,
