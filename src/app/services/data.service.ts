@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { throwError } from 'rxjs';
+import { environment } from '../../environment/environment';
 
 export interface Data {
   date: number;
@@ -14,7 +14,7 @@ export interface Data {
   providedIn: 'root'
 })
 export class DataService {
-  private apiUrl = 'http://ec2-13-233-251-193.ap-south-1.compute.amazonaws.com:8080/';  // Updated URL to web API
+  private apiUrl = `${environment.apiUrl}data`;  // Use environment variable
 
   constructor(private http: HttpClient) { }
 
@@ -34,7 +34,7 @@ export class DataService {
   }
 
   createData(data: Data): Observable<Data> {
-    return this.http.post<Data>(this.apiUrl, data)
+    return this.http.post<Data>(this.apiUrl, data, this.httpOptions)
       .pipe(
         catchError(this.handleError)
       );
@@ -42,7 +42,7 @@ export class DataService {
 
   updateData(date: number, data: Data): Observable<any> {
     const url = `${this.apiUrl}/${date}`;
-    return this.http.put(url, data)
+    return this.http.put(url, data, this.httpOptions)
       .pipe(
         catchError(this.handleError)
       );
@@ -50,7 +50,7 @@ export class DataService {
 
   deleteData(date: number): Observable<any> {
     const url = `${this.apiUrl}/${date}`;
-    return this.http.delete(url)
+    return this.http.delete(url, this.httpOptions)
       .pipe(
         catchError(this.handleError)
       );
@@ -60,4 +60,13 @@ export class DataService {
     console.error('An error occurred', error); // for demo purposes only
     return throwError(error.message || error);
   }
+
+  private get httpOptions() {
+    return {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+  }
 }
+
