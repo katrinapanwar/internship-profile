@@ -21,15 +21,12 @@ import { MatMenuModule } from '@angular/material/menu';
 import { HomeComponent } from './home/home.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ProgressComponent } from './progress/progress.component';
-import { EntryManagerComponent } from './entry-manager/entry-manager.component';
-import { NewEntryComponent } from './new-entry/new-entry.component';
 import { FormGroup, FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { JsonPipe } from '@angular/common';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule, provideNativeDateAdapter } from '@angular/material/core';
 import {MatInputModule} from '@angular/material/input';
-import { OldEntryComponent } from './old-entry/old-entry.component';
 import { DialogComponent } from './dialog/dialog.component';
 import { InternshipComponent } from './internship/internship.component';
 import { MatCardModule } from '@angular/material/card';  // Import MatCardModule
@@ -69,9 +66,6 @@ const routes: Routes = [
     MenuComponent,
     HomeComponent,
     ProgressComponent,
-    EntryManagerComponent,
-    NewEntryComponent,
-    OldEntryComponent,
     DialogComponent,
     InternshipComponent
     ],
