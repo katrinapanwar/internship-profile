@@ -14,7 +14,7 @@ export interface Data {
   providedIn: 'root'
 })
 export class DataService {
-  private apiUrl = 'http://localhost:8080/data';  // URL to web API
+  private apiUrl = 'http://13.233.251.193:8080/data';  // Updated URL to web API
 
   constructor(private http: HttpClient) { }
 

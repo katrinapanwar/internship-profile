@@ -1,4 +1,4 @@
-
+/* Existing styles for larger screens */
 header {
     background-color: #ffffff;
     padding: 0px; /* Reduce padding to make the header smaller */
@@ -19,3 +19,23 @@ h1 {
     color: rgb(1, 1, 1);
     margin-left: 10px;
 }
+
+/* Responsive styles for screens smaller than 800px */
+@media (max-width: 800px) {
+    header {
+        padding: 10px; /* Add some padding for smaller screens */
+        text-align: center; /* Center align text for better readability */
+        height: auto; /* Adjust height to fit the content */
+        width: auto; /* Make the header take the full width */
+        margin-left: 0; 
+        margin-right: 0;
+        border-left: none; /* Remove left and right borders */
+        border-right: none;
+    }
+
+    h1 {
+        font-size: 18px; /* Reduce font size */
+        margin-left: 0; /* Remove left margin */
+    }
+}
+
