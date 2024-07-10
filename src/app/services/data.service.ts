@@ -5,7 +5,7 @@ import { catchError } from 'rxjs/operators';
 import { environment } from '../../environment/environment';
 
 export interface Data {
-  date: number;
+  date: string;   // Change from number to string
   day: string;
   tasks: string;
 }
@@ -25,7 +25,7 @@ export class DataService {
       );
   }
 
-  getDataByDate(date: number): Observable<Data> {
+  getDataByDate(date: string): Observable<Data> {
     const url = `${this.apiUrl}/${date}`;
     return this.http.get<Data>(url)
       .pipe(
@@ -34,13 +34,19 @@ export class DataService {
   }
 
   createData(data: Data): Observable<Data> {
-    return this.http.post<Data>(this.apiUrl, data, this.httpOptions)
+    // Ensure date is converted to string before sending
+    const dataToSend: Data = {
+      ...data,
+      date: data.date.toString()  // Convert date to string if it's a number
+    };
+
+    return this.http.post<Data>(this.apiUrl, dataToSend, this.httpOptions)
       .pipe(
         catchError(this.handleError)
       );
   }
 
-  updateData(date: number, data: Data): Observable<any> {
+  updateData(date: string, data: Data): Observable<any> {
     const url = `${this.apiUrl}/${date}`;
     return this.http.put(url, data, this.httpOptions)
       .pipe(
@@ -48,7 +54,7 @@ export class DataService {
       );
   }
 
-  deleteData(date: number): Observable<any> {
+  deleteData(date: string): Observable<any> {
     const url = `${this.apiUrl}/${date}`;
     return this.http.delete(url, this.httpOptions)
       .pipe(
@@ -69,4 +75,5 @@ export class DataService {
     };
   }
 }
+
 

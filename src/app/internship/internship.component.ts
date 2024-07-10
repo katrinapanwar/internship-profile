@@ -72,7 +72,8 @@ export class InternshipComponent implements OnInit {
     const existingUpdateIndex = this.updates.findIndex(update =>
       update.date === this.formattedDate && update.day === this.day_input
     );
-
+    console.log(`existingUpdateIndex : ${existingUpdateIndex}`)
+    console.log(this.tasks_input)
     if (existingUpdateIndex !== -1) {
       // Append the new task to the existing entry
       this.updates[existingUpdateIndex].task.push(this.tasks_input);
@@ -80,7 +81,7 @@ export class InternshipComponent implements OnInit {
       // Update the existing entry using DataService
       const existingUpdate = this.updates[existingUpdateIndex];
       const dataEntry: Data = {
-        date: +new Date(existingUpdate.date).getTime(), // Convert formattedDate to timestamp
+        date: (+new Date(existingUpdate.date).getTime()).toString(), // Convert formattedDate to timestamp
         day: existingUpdate.day,
         tasks: existingUpdate.task.join(', ')
       };
@@ -90,6 +91,7 @@ export class InternshipComponent implements OnInit {
       });
     } else {
       // Create new entry
+
       const newUpdate = new intern_update(
         this.formattedDate,
         this.day_input,
@@ -98,13 +100,15 @@ export class InternshipComponent implements OnInit {
         0
       );
 
+      console.log(newUpdate)
       // Save new entry using DataService
-      const dataEntry: Data = {
-        date: +new Date(this.formattedDate).getTime(), // Convert formattedDate to timestamp
+       const dataEntry: Data = {
+         date: newUpdate.date, // Convert formattedDate to timestamp
         day: this.day_input,
         tasks: this.tasks_input
       };
-
+      console.log(+new Date(this.formattedDate))
+      console.log(dataEntry)
       this.dataService.createData(dataEntry).subscribe(createdData => {
         newUpdate.date = new Date(createdData.date).toLocaleDateString('en-CA');
         this.updates.push(newUpdate);
@@ -159,24 +163,23 @@ export class InternshipComponent implements OnInit {
     this.dialog.open(DialogComponent, {});
   }
 
-  updateEntry(index: number) {
-    const update = this.updates[index];
-    const dataEntry: Data = {
-      date: +new Date(update.date).getTime(),
-      day: update.day,
-      tasks: update.task.join(', ')
-    };
-
-    this.dataService.updateData(dataEntry.date, dataEntry).subscribe(() => {
-      this.saveUpdatesToLocalStorage();
-    });
-  }
+  // updateEntry(index: number) {
+  //   const update = this.updates[index];
+  //   const dataEntry: Data = {
+  //     date: +new Date(update.date).getTime(),
+  //     day: update.day,
+  //     tasks: update.task.join(', ')
+  //   };
+  //
+  //   this.dataService.updateData(dataEntry.date, dataEntry).subscribe(() => {
+  //     this.saveUpdatesToLocalStorage();
+  //   });
+  // }
 
   deleteEntry(dateString: string) {
     if (this.deletePermission) {
-      const date = +new Date(dateString).getTime();
-      this.dataService.deleteData(date).subscribe(() => {
-        this.updates = this.updates.filter(u => +new Date(u.date).getTime() !== date);
+      this.dataService.deleteData(dateString).subscribe(() => {
+        this.updates = this.updates.filter(u => u.date !== dateString);
         this.saveUpdatesToLocalStorage();
       });
     } else {
@@ -197,6 +200,9 @@ export class InternshipComponent implements OnInit {
     this.hiddenPassword = '*'.repeat(tempPassword.length); // Update hidden password
   }
 }
+
+
+
 
 
 
