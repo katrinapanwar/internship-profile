@@ -81,7 +81,7 @@ export class InternshipComponent implements OnInit {
       // Update the existing entry using DataService
       const existingUpdate = this.updates[existingUpdateIndex];
       const dataEntry: Data = {
-        date: (+new Date(existingUpdate.date).getTime()).toString(), // Convert formattedDate to timestamp
+        date: existingUpdate.date, // Date is already a string in the required format
         day: existingUpdate.day,
         tasks: existingUpdate.task.join(', ')
       };
@@ -103,7 +103,7 @@ export class InternshipComponent implements OnInit {
       console.log(newUpdate)
       // Save new entry using DataService
        const dataEntry: Data = {
-         date: newUpdate.date, // Convert formattedDate to timestamp
+         date: newUpdate.date, // Date is already a string in the required format
         day: this.day_input,
         tasks: this.tasks_input
       };
@@ -163,18 +163,18 @@ export class InternshipComponent implements OnInit {
     this.dialog.open(DialogComponent, {});
   }
 
-  // updateEntry(index: number) {
-  //   const update = this.updates[index];
-  //   const dataEntry: Data = {
-  //     date: +new Date(update.date).getTime(),
-  //     day: update.day,
-  //     tasks: update.task.join(', ')
-  //   };
-  //
-  //   this.dataService.updateData(dataEntry.date, dataEntry).subscribe(() => {
-  //     this.saveUpdatesToLocalStorage();
-  //   });
-  // }
+   updateEntry(index: number) {
+     const update = this.updates[index];
+     const dataEntry: Data = {
+       date: update.date, // Date is already a string in the required format
+       day: update.day,
+       tasks: update.task.join(', ')
+     };
+  
+     this.dataService.updateData(dataEntry.date, dataEntry).subscribe(() => {
+       this.saveUpdatesToLocalStorage();
+     });
+   }
 
   deleteEntry(dateString: string) {
     if (this.deletePermission) {
@@ -200,6 +200,21 @@ export class InternshipComponent implements OnInit {
     this.hiddenPassword = '*'.repeat(tempPassword.length); // Update hidden password
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
