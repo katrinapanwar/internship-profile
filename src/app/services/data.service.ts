@@ -5,9 +5,12 @@ import { catchError } from 'rxjs/operators';
 import { environment } from '../../environment/environment';
 
 export interface Data {
-  date: string;   // Change from number to string
+  date: string;
   day: string;
   tasks: string;
+  checkData: boolean[];
+  checked: number;
+  tags: string[];  // Include tags property
 }
 
 @Injectable({
@@ -34,7 +37,6 @@ export class DataService {
   }
 
   createData(data: Data): Observable<Data> {
-    // Ensure date is converted to string before sending
     const dataToSend: Data = {
       ...data,
       date: data.date.toString()  // Convert date to string if it's a number
@@ -75,3 +77,4 @@ export class DataService {
     };
   }
 }
+

@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { Day1Component } from './progress/day1/day1.component';
 import { Day2Component } from './progress/day2/day2.component';
+import { MatChipsModule } from '@angular/material/chips';
 import { Day3Component } from './progress/day3/day3.component';
 import { Day4Component } from './progress/day4/day4.component';
 import { Day5Component } from './progress/day5/day5.component';
@@ -92,6 +93,7 @@ const routes: Routes = [
     AppRoutingModule,
     BrowserAnimationsModule,
     MatDatepickerModule,
+    MatChipsModule,
     MatFormFieldModule,
     MatInputModule,
     MatNativeDateModule,
@@ -107,7 +109,7 @@ const routes: Routes = [
     MatCheckboxModule,
     JsonPipe,
     MatProgressSpinnerModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [
     provideAnimationsAsync()

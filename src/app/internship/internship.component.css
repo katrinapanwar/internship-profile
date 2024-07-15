@@ -119,6 +119,46 @@ h2 {
   align-items: left;
 }
 
+.tag-container {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.tag-type {
+  display: inline-block;
+  background-color: #ffffff;
+  border: 1.5px solid #ddd;
+  padding: 5px 10px;
+  border-radius: 50px; /* make it a circle */
+  font-size: 13px;
+  font-weight: normal;
+  color: #999;
+  margin-right: 10px;
+}
+
+.tag-date {
+  font-size: 16px;
+  font-weight: normal;
+  color: #999;
+  margin-left: auto; /* push it to the right side */
+}
+
+.dis {
+  padding: 20px;
+}
+
+.day-button {
+  margin-right: 10px;
+}
+
+  
+  
+  
+
+
+
+
   
   
   

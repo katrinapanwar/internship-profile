@@ -1,70 +1,88 @@
-<!-- internship.component.html -->
 <header>
   <h1 class="mat-display-1">Internship at <br><img src="assets/images/engtangle2_logo.png" style="height:50px;"></h1>
 </header>
 
 <div *ngIf="show_ip">
-    <div class="button-container">
-      <mat-button-toggle-group name="fontStyle" aria-label="Font Style" class="button-toggle-group" [(ngModel)]="selectedValue">
-        <mat-button-toggle value="create" class="custom-button" (click)="onAddEntry()">Create New Entry</mat-button-toggle>
-        <mat-button-toggle value="show" class="custom-button" (click)="onShowEntry()">Show Existing Entries</mat-button-toggle>
-        <div class="slider" [ngClass]="{'slide-create': selectedValue === 'create', 'slide-show': selectedValue === 'show'}"></div>
-      </mat-button-toggle-group>
+  <div class="button-container">
+    <mat-button-toggle-group name="fontStyle" aria-label="Font Style" class="button-toggle-group" [(ngModel)]="selectedValue">
+      <mat-button-toggle value="create" class="custom-button" (click)="onAddEntry()">Create New Entry</mat-button-toggle>
+      <mat-button-toggle value="show" class="custom-button" (click)="onShowEntry()">Show Existing Entries</mat-button-toggle>
+      <div class="slider" [ngClass]="{'slide-create': selectedValue === 'create', 'slide-show': selectedValue === 'show'}"></div>
+    </mat-button-toggle-group>
+  </div>
+
+  <div class="content-container">
+    <div *ngIf="create_entry">
+      <br>
+      <h1 class="mat-display-1">Enter Task Details</h1>
+      <hr>
+      <mat-form-field>
+        <mat-label>Date</mat-label>
+        <input type="text" matInput [matDatepicker]="datepicker" [(ngModel)]="selectedDate" (dateChange)="onUpdateDate($event)">
+        <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+        <mat-datepicker #datepicker></mat-datepicker>
+      </mat-form-field>
+
+      <br>
+      <mat-form-field>
+        <mat-label>Day</mat-label>
+        <input type="text" matInput (input)="onUpdateDay($event)" [(ngModel)]="day_input">
+      </mat-form-field>
+
+      <br>
+      <mat-form-field>
+        <mat-label>Tasks</mat-label>
+        <input type="text" matInput (input)="onUpdateTask($event)" [(ngModel)]="tasks_input">
+      </mat-form-field>
+      <br>
+      <button mat-raised-button color="primary" [disabled]="!add_button_status" (click)="new_entry('New Entry Added', 'Close')">Save</button>
     </div>
 
-    <div class="content-container">
-      <div *ngIf="create_entry">
-        <br>
-        <h1 class="mat-display-1">Enter Task Details</h1>
-        <hr>
-        <mat-form-field>
-          <mat-label>Date</mat-label>
-          <input type="text" matInput [matDatepicker]="datepicker" [(ngModel)]="selectedDate" (dateChange)="onUpdateDate($event)">
-          <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
-          <mat-datepicker #datepicker></mat-datepicker>
-        </mat-form-field>
-
-        <br>
-        <mat-form-field>
-          <mat-label>Day</mat-label>
-          <input type="text" matInput (input)="onUpdateDay($event)" [(ngModel)]="day_input">
-        </mat-form-field>
-
-        <br>
-        <mat-form-field>
-          <mat-label>Tasks</mat-label>
-          <input type="text" matInput (input)="onUpdateTask($event)" [(ngModel)]="tasks_input">
-          <!--<textarea matInput (input)="onUpdateTask($event)"></textarea> -->
-        </mat-form-field>
-        <br>
-        <button mat-raised-button color="primary" [disabled]="!add_button_status" (click)="new_entry('New Entry Added', 'Close')">Save</button>
-      </div>
-
-      <div *ngIf="show_entry">
-        <div class="data-container">
-          <div *ngFor="let item of updates; let i = index">
-            <mat-card class="dis">
+    <div *ngIf="show_entry">
+      <div class="data-container">
+        <div *ngFor="let item of updates; let i = index">
+          <mat-card class="dis">
+            <div style="display: flex; justify-content: space-between;">
               <button mat-flat-button (click)="openDialog(i)" class="day-button">{{ item.day }}</button>
-              <mat-card-content style="padding-top: 10px">{{ item.date }}</mat-card-content>
               <button mat-icon-button color="warn" *ngIf="deletePermission" (click)="deleteEntry(item.date)">
                 <mat-icon>delete</mat-icon>
               </button>
-            </mat-card>
-          </div>
+            </div>
+            <div class="tag-container">
+                <span class="tag-type">{{ item.tags }}</span>
+                <span class="tag-date">{{ item.date }}</span>
+            </div>
+          </mat-card>
         </div>
 
-        <div>
-          <div class="password-content">
-          <mat-form-field>
-            <mat-label>Password for Delete Permission</mat-label>
-            <input matInput type="password" [(ngModel)]="passwordInput">
-          </mat-form-field>
-          <button mat-raised-button color="primary" (click)="updateDeletePermission()">Update Permission</button>
-        </div>
-        </div>
+      <div class="password-content">
+        <mat-form-field>
+          <mat-label>Password for Delete Permission</mat-label>
+          <input matInput type="password" [(ngModel)]="passwordInput">
+        </mat-form-field>
+        <button mat-raised-button color="primary" (click)="updateDeletePermission()">Update Permission</button>
       </div>
     </div>
   </div>
+</div>
+
+
+
+
+
+
+  
+  
+  
+
+
+
+
+  
+  
+  
+
+
 
 
 
