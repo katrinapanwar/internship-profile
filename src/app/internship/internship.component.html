@@ -40,20 +40,25 @@
 
     <div *ngIf="show_entry">
       <div class="data-container">
-        <div *ngFor="let item of updates; let i = index">
-          <mat-card class="dis">
-            <div style="display: flex; justify-content: space-between;">
-              <button mat-flat-button (click)="openDialog(i)" class="day-button">{{ item.day }}</button>
-              <button mat-icon-button color="warn" *ngIf="deletePermission" (click)="deleteEntry(item.date)">
-                <mat-icon>delete</mat-icon>
-              </button>
-            </div>
-            <div class="tag-container">
-                <span class="tag-type">{{ item.tags }}</span>
-                <span class="tag-date">{{ item.date }}</span>
-            </div>
-          </mat-card>
+        <h3 class="mat-display-1">Saved Task Entries </h3>
+        <hr>
+        <div class="card-wrapper">
+          <div *ngFor="let item of updates; let i = index">
+            <mat-card class="dis">
+              <div style="display: flex; justify-content: space-between;">
+                <button mat-flat-button (click)="openDialog(i)" class="day-button">{{ item.day }}</button>
+                <button mat-icon-button color="warn" *ngIf="deletePermission" (click)="deleteEntry(item.date)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </div>
+              <div class="tag-container">
+                  <span class="tag-type"><span class="circle"></span>{{ item.tags }}</span>
+                  <span class="tag-date">{{ item.date }}</span>
+              </div>
+            </mat-card>
+          </div>
         </div>
+      </div>
 
       <div class="password-content">
         <mat-form-field>
@@ -65,6 +70,8 @@
     </div>
   </div>
 </div>
+
+
 
 
 

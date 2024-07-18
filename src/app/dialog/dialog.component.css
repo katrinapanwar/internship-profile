@@ -1,38 +1,84 @@
 .dialog-content {
-    padding: 20px;
-  }
-  
-  .dialog-content > div {
-    display: flex;
+  padding: 20px;
+  text-align: center; /* center the content */
+}
 
-  }
-  
-  .dialog-content h2 {
-    margin-right: 20px;
-  }
-  
-  .dialog-content hr {
-    margin: 20px 0;
-  }
-  
-  .content {
-    padding-left: 20px;
-  }
-  
-  .content mat-list {
-    padding-left: 20px;
-  }
-  
-  .cb {
-    justify-content: flex-end;
-  }
-  
-  .button {
-    margin-left: 10px;
-  }
-  
-  .dialog-content {
-    padding: 20px;
+.dialog-content > div {
+  display: flex;
+  justify-content: center; /* center the flex items */
+}
 
-  }
+.dialog-content h2 {
+  margin-right: 20px;
+  margin-top: 30px;
+}
+
+.dialog-content hr {
+  margin: 20px 0;
+}
+
+.content {
+  padding-left: 20px;
+}
+
+.content mat-list {
+  padding-left: 20px;
+}
+
+.cb {
+  justify-content: center; /* center the buttons */
+}
+
+.button-container {
+  display: flex;
+  flex-wrap: wrap; /* wrap the buttons to the next line */
+  justify-content: center; /* center the buttons */
+}
+
+.button {
+  margin: 10px; /* add margin to the buttons */
+  transition: background-color 0.2s ease-in-out; /* add a transition effect */
+}
+
+.button:hover {
+  background-color: #ccc; /* change the background color on hover */
+  cursor: pointer; /* change the cursor shape to a pointing hand */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* add a subtle shadow effect */
+}
+
+.dis {
+  width: 100px; /* Set the desired width */
+  height: 150px;
+  display: flex;
+  border-radius: 10px;
+  flex-direction: column;
+  align-items: center; /* Center align content vertically */
+  text-align: center; /* Center align text horizontally */
+  position: relative; /* Add relative positioning for pseudo-element */
+  margin: 10px; /* add margin to the buttons */
+}
+
+.dis img {
+  padding-top: 10px;
+  max-width: 80px; /* Adjust the max-width of the image */
+  transition: transform 0.3s ease; /* Add transition for smooth animation */
+}
+
+/* Pseudo-element for swipe effect */
+.dis::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  transition: width 0.3s ease, border-radius 0.3s ease; /* Include border-radius in the transition */
+  border-radius: 10px; /* Set the desired border radius */
+}
+
+/* Hover effect */
+.dis:hover::before {
+  width: 100%; /* Expand the pseudo-element width on hover */
+}
   
