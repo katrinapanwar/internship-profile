@@ -14,7 +14,7 @@
   <div class="content-container">
     <div *ngIf="create_entry">
       <br>
-      <h1 class="mat-display-1">Enter Task Details</h1>
+      <h2 class="mat-display-1">Enter Task Details</h2>
       <hr>
       <mat-form-field>
         <mat-label>Date</mat-label>
@@ -40,7 +40,7 @@
 
     <div *ngIf="show_entry">
       <div class="data-container">
-        <h3 class="mat-display-1">Saved Task Entries </h3>
+        <h2 class="mat-display-1" style="text-align: center;">Saved Task Entries </h2>
         <hr>
         <div class="card-wrapper">
           <div *ngFor="let item of updates; let i = index">
