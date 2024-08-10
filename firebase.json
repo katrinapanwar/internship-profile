@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/internship-profile",
+    "public": "dist/internship-profile/browser",
     "ignore": [
       "firebase.json",
       "**/.*",
